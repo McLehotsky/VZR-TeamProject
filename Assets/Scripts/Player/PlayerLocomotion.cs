@@ -5,26 +5,24 @@ public class PlayerLocomotion : MonoBehaviour
     PlayerManager playerManager;
     InputHandler inputHandler;
     Rigidbody rb;
-    Transform cameraObject; // Potrebujeme vedieť, kde je kamera
+    Transform cameraObject;
 
     [Header("Movement Stats")]
-    public float movementSpeed = 5f;
-    public float rotationSpeed = 10f;
+    [SerializeField] float walkingSpeed = 2f;
+    [SerializeField] float runningSpeed = 5f;
+    [SerializeField] float sprintingSpeed = 8f;
+    [SerializeField] float rotationSpeed = 10f;
 
     private void Awake()
     {
         playerManager = GetComponent<PlayerManager>();
         inputHandler = GetComponent<InputHandler>();
         rb = GetComponent<Rigidbody>();
-        
-        // Získame referenciu na Main Camera
         cameraObject = Camera.main.transform;
     }
 
     public void HandleAllMovement()
     {
-        // Ak práve prebieha animácia (útok/roll), zastavíme fyzický pohyb
-        // Toto zatiaľ nerobí nič, ale je to príprava na neskôr
         if (playerManager.isInteracting)
             return;
 
@@ -34,39 +32,73 @@ public class PlayerLocomotion : MonoBehaviour
 
     private void HandleMovement()
     {
-        // 1. Získame smer pohybu podľa KAMERY
+        if (inputHandler.moveAmount == 0)
+        {
+            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
+            return;
+        }
+
+        // Movement direction
         Vector3 moveDirection = cameraObject.forward * inputHandler.vertical;
         moveDirection += cameraObject.right * inputHandler.horizontal;
-        
-        // 2. Vyčistíme Y os (aby sme nechceli ísť do zeme alebo do neba)
         moveDirection.Normalize();
         moveDirection.y = 0;
 
-        // 3. Aplikujeme rýchlosť
-        Vector3 movementVelocity = moveDirection * movementSpeed;
+        // Determine speed
+        float targetSpeed = 0f;
 
-        // 4. Nastavíme Velocity Rigidbody (zachováme gravitáciu na Y)
+        if (playerManager.isSprinting)
+        {
+            targetSpeed = sprintingSpeed;
+        }
+        else
+        {
+            // Walking speed only able with gamepad
+            if (inputHandler.moveAmount < 0.55f)
+            {
+                targetSpeed = walkingSpeed;
+            }
+            else
+            {
+                targetSpeed = runningSpeed;
+            }
+        }
+
+        Vector3 movementVelocity = moveDirection * targetSpeed;
         rb.linearVelocity = new Vector3(movementVelocity.x, rb.linearVelocity.y, movementVelocity.z);
     }
 
     private void HandleRotation()
     {
-        Vector3 targetDir = Vector3.zero;
+        // Strafing / Lock on
+        if (playerManager.isStrafing)
+        {
+            // V Combat móde sa vždy chceme pozerať tam, kam kamera (alebo na nepriateľa)
+            Vector3 targetDir = cameraObject.forward;
+            targetDir.y = 0;
+            targetDir.Normalize();
 
-        // Opäť vypočítame smer podľa kamery
-        targetDir = cameraObject.forward * inputHandler.vertical;
-        targetDir += cameraObject.right * inputHandler.horizontal;
-        targetDir.Normalize();
-        targetDir.y = 0;
+            Quaternion tr = Quaternion.LookRotation(targetDir);
+            Quaternion targetRotation = Quaternion.Slerp(transform.rotation, tr, rotationSpeed * Time.deltaTime);
+            transform.rotation = targetRotation;
+        }
+        // Free Roam
+        else
+        {
+            Vector3 targetDir = Vector3.zero;
 
-        // Ak sa nehýbeme (input je 0), nechceme sa otočiť späť na nulu, ostaneme tak ako sme
-        if (targetDir == Vector3.zero)
-            targetDir = transform.forward;
+            targetDir = cameraObject.forward * inputHandler.vertical;
+            targetDir += cameraObject.right * inputHandler.horizontal;
+            targetDir.Normalize();
+            targetDir.y = 0;
 
-        // Plynulá rotácia (Slerp) k novému smeru
-        Quaternion tr = Quaternion.LookRotation(targetDir);
-        Quaternion targetRotation = Quaternion.Slerp(transform.rotation, tr, rotationSpeed * Time.deltaTime);
+            if (targetDir == Vector3.zero)
+                targetDir = transform.forward;
 
-        transform.rotation = targetRotation;
+            Quaternion tr = Quaternion.LookRotation(targetDir);
+            Quaternion targetRotation = Quaternion.Slerp(transform.rotation, tr, rotationSpeed * Time.deltaTime);
+
+            transform.rotation = targetRotation;
+        }
     }
 }
