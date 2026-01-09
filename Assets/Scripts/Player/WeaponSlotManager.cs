@@ -36,7 +36,7 @@ public class WeaponSlotManager : MonoBehaviour
             // Posleme ID zbrane do Animatora, aby vedel aku "Combat Idle" animaciu ma hrat
             if (weaponItem != null)
             {
-                // animatorManager.SetWeaponType(weaponItem.holdTypeID);
+                animatorManager.SetWeaponType(weaponItem.holdTypeID);
             }
         }
     }

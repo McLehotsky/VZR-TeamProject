@@ -16,7 +16,7 @@ MonoBehaviour:
   itemIcon: {fileID: 0}
   modelPrefab: {fileID: 191440, guid: 316022a1c585a7b45b3cc2f855960c93, type: 3}
   isUnarmed: 0
-  holdTypeID: 2
+  holdTypeID: 3
   physicalDamage: 25
   staminaCost: 20
   isTwoHanded: 1
