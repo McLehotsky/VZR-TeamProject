@@ -16,7 +16,7 @@ public class WeaponItem : Item
     public int staminaCost = 20;
 
     [Header("Attack Animations")]
-    public string OH_Light_Attack_1; // One Handed Light 1
-    public string OH_Light_Attack_2; // One Handed Light 2
-    public string OH_Heavy_Attack_1; // One Handed Heavy
+    public string Light_Attack_1;
+    public string Light_Attack_2;
+    public string Heavy_Attack_1;
 }

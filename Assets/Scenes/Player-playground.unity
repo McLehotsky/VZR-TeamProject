@@ -3433,7 +3433,7 @@ MonoBehaviour:
   isSprinting: 0
   isLockedOn: 0
   canDoCombo: 0
-  startingWeapon: {fileID: 11400000, guid: 25154a294fde6204a8947b8c0d53f308, type: 2}
+  startingWeapon: {fileID: 11400000, guid: fa8635505ab152c4098d95b727144caa, type: 2}
 --- !u!114 &1467444400
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -46,10 +46,10 @@ public class PlayerAttacker : MonoBehaviour
             inputHandler.rb_Input = false;
 
             // Ak bol posledný útok "Attack 1", prehráme "Attack 2"
-            if (lastAttack == weapon.OH_Light_Attack_1)
+            if (lastAttack == weapon.Light_Attack_1)
             {
-                animatorManager.PlayTargetAnimation(weapon.OH_Light_Attack_2, true);
-                lastAttack = weapon.OH_Light_Attack_2; // Uložíme si, že teraz sme v 2. útoku
+                animatorManager.PlayTargetAnimation(weapon.Light_Attack_2, true);
+                lastAttack = weapon.Light_Attack_2; // Uložíme si, že teraz sme v 2. útoku
             }
             // Tu by sme mohli pokračovať (Ak last == Attack 2 -> Play Attack 3...)
         }
@@ -61,8 +61,8 @@ public class PlayerAttacker : MonoBehaviour
 
             // ŠTART COMB - Prvý útok
             inputHandler.rb_Input = false;
-            animatorManager.PlayTargetAnimation(weapon.OH_Light_Attack_1, true);
-            lastAttack = weapon.OH_Light_Attack_1; // Uložíme si názov
+            animatorManager.PlayTargetAnimation(weapon.Light_Attack_1, true);
+            lastAttack = weapon.Light_Attack_1; // Uložíme si názov
         }
     }
 
@@ -73,6 +73,6 @@ public class PlayerAttacker : MonoBehaviour
         if (playerManager.isInteracting)
             return;
 
-        animatorManager.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true);
+        animatorManager.PlayTargetAnimation(weapon.Heavy_Attack_1, true);
     }
 }
