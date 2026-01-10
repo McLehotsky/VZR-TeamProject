@@ -15,6 +15,8 @@ public class WeaponItem : Item
     public int physicalDamage = 25;
     public int staminaCost = 20;
 
-    [Header("One Handed / Two Handed")]
-    public bool isTwoHanded; // Ak true, pouzijeme UpperBody Masku
+    [Header("Attack Animations")]
+    public string Light_Attack_1;
+    public string Light_Attack_2;
+    public string Heavy_Attack_1;
 }

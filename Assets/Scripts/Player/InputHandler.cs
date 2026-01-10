@@ -18,6 +18,10 @@ public class InputHandler : MonoBehaviour
     public bool sprint_Input;
     public bool lockOn_Input;
 
+    [Header("Combat Inputs")]
+    public bool rb_Input; // Light Attack
+    public bool rt_Input; // Heavy Attack
+
     // Tato funkcia sa zavola, ked sa objekt (Player) aktivuje
     private void OnEnable()
     {
@@ -48,6 +52,10 @@ public class InputHandler : MonoBehaviour
 
             // Lock-On
             inputActions.Player.LockOn.performed += i => lockOn_Input = true;
+
+            // Combat Inputs
+            inputActions.Player.RB.performed += i => rb_Input = true;
+            inputActions.Player.RT.performed += i => rt_Input = true;
         }
 
         inputActions.Enable();

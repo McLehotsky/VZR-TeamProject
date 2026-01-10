@@ -19,4 +19,6 @@ MonoBehaviour:
   holdTypeID: 1
   physicalDamage: 25
   staminaCost: 20
-  isTwoHanded: 0
+  Light_Attack_1: OH_Attack_1
+  Light_Attack_2: OH_Attack_2
+  Heavy_Attack_1: OH_Heavy_1

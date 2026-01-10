@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f33036eb1c8747488949b818e61c5da, type: 3}
-  m_Name: Polearm
+  m_Name: Scythe
   m_EditorClassIdentifier: Assembly-CSharp::WeaponItem
-  itemName: Polearm
+  itemName: Scythe
   itemIcon: {fileID: 0}
-  modelPrefab: {fileID: 191440, guid: 316022a1c585a7b45b3cc2f855960c93, type: 3}
+  modelPrefab: {fileID: 107148, guid: 2af05eac9619e09419fa737d4829b030, type: 3}
   isUnarmed: 0
-  holdTypeID: 3
+  holdTypeID: 2
   physicalDamage: 25
   staminaCost: 20
-  Light_Attack_1: Polearm_Attack_1
-  Light_Attack_2: Polearm_Attack_2
-  Heavy_Attack_1: Polearm_Heavy_1
+  isTwoHanded: 1
