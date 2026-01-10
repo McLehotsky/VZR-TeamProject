@@ -73,7 +73,7 @@ public class PlayerLocomotion : MonoBehaviour
         // Strafing / Lock on
         if (playerManager.isStrafing)
         {
-            // V Combat móde sa vždy chceme pozerať tam, kam kamera (alebo na nepriateľa)
+            // Lock on mode we are looking towards target 
             Vector3 targetDir = cameraObject.forward;
             targetDir.y = 0;
             targetDir.Normalize();
@@ -85,6 +85,7 @@ public class PlayerLocomotion : MonoBehaviour
         // Free Roam
         else
         {
+            // Reseting target direction
             Vector3 targetDir = Vector3.zero;
 
             targetDir = cameraObject.forward * inputHandler.vertical;

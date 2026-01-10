@@ -27,13 +27,14 @@ public class WeaponSlotManager : MonoBehaviour
         if (isLeft)
         {
             leftHandSlot.LoadWeaponModel(weaponItem);
-            // Tu by sme riesili logiku pre lavu ruku (stit atd)
+            // TODO logic for left hand (shield, etc.)
         }
         else
         {
             rightHandSlot.LoadWeaponModel(weaponItem);
 
             // Posleme ID zbrane do Animatora, aby vedel aku "Combat Idle" animaciu ma hrat
+            // Sending holdId from weapon to determine what hold layer to use
             if (weaponItem != null)
             {
                 animatorManager.SetWeaponType(weaponItem.holdTypeID);

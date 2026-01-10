@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
-    public PlayerControls inputActions; // Odkaz na vygenerovanú triedu
+    public PlayerControls inputActions;
 
     [Header("Movement Input")]
-    public Vector2 movementInput; // Surové dáta (x, y)
-    public float vertical;        // Dopredu/Dozadu
-    public float horizontal;      // Vlavo/Vpravo
-    public float moveAmount;      // 0 až 1 (dôležité pre animácie)
+    public Vector2 movementInput;
+    public float vertical;
+    public float horizontal;
+    public float moveAmount;      // for animation (0, 1) range
 
     [Header("Camera Input")]
     public float mouseX;
@@ -22,7 +22,7 @@ public class InputHandler : MonoBehaviour
     public bool rb_Input; // Light Attack
     public bool rt_Input; // Heavy Attack
 
-    // Tato funkcia sa zavola, ked sa objekt (Player) aktivuje
+    // Call when Player activates
     private void OnEnable()
     {
         if (inputActions == null)

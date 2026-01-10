@@ -34,7 +34,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (startingWeapon != null)
         {
-            // Na zaciatku nacitame zbran do pravej ruky
+            // Seting starting weapon to right hand (FALSE = RIGHT, TRUE = LEFT)
             weaponSlotManager.LoadWeaponOnSlot(startingWeapon, false);
             playerAttacker.currentWeapon = startingWeapon;
         }
@@ -42,7 +42,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
-        // Každý frame čítame inputy
+        // Reads inputs per frame
         inputHandler.TickInput(Time.deltaTime);
 
         playerAttacker.HandleCombatInput();
@@ -71,9 +71,9 @@ public class PlayerManager : MonoBehaviour
         playerLocomotion.HandleAllMovement();
     }
 
-    private void LateUpdate() // Alebo Update
+    private void LateUpdate()
     {
-        // Ak sme prestali útočiť (animácia skončila), resetneme combo flag
+        // Reset combo flag when attack animation ends
         if (!isInteracting)
         {
             canDoCombo = false;
