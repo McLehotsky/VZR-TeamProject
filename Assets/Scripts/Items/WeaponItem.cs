@@ -13,7 +13,9 @@ public class WeaponItem : Item
 
     [Header("Combat Stats")]
     public int physicalDamage = 25;
+    public int physicalDamageHeavy = 40;
     public int staminaCost = 20;
+    public int staminaCostHeavy = 45;
 
     [Header("Attack Animations")]
     public string Light_Attack_1;

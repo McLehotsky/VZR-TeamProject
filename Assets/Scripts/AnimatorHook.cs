@@ -6,11 +6,11 @@ public class AnimatorHook : MonoBehaviour
 
     private void Awake()
     {
-        // Nájde skript na rodičovskom objekte (Player)
+        // Get reference to PlayerAnimatorManager in parent
         animatorManager = GetComponentInParent<PlayerAnimatorManager>();
     }
 
-    // Túto funkciu zavolá Animation Event
+    // Function called by Animation Event to enable combo
     public void EnableCombo()
     {
         if (animatorManager != null)
@@ -19,7 +19,7 @@ public class AnimatorHook : MonoBehaviour
         }
     }
 
-    // Túto funkciu zavolá Animation Event (ak ju pridáš na koniec animácie)
+    // Function called by Animation Event to disable combo
     public void DisableCombo()
     {
         if (animatorManager != null)

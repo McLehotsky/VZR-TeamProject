@@ -5,13 +5,13 @@ public class WeaponSlotManager : MonoBehaviour
     WeaponHolderSlot leftHandSlot;
     WeaponHolderSlot rightHandSlot;
 
-    PlayerAnimatorManager animatorManager; // Aby sme hned nastavili animacie
+    PlayerAnimatorManager animatorManager;
 
     private void Awake()
     {
         animatorManager = GetComponent<PlayerAnimatorManager>();
 
-        // Najdeme sloty v detoch (na kostiach)
+        // Get weapon holder slots
         WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
         foreach (WeaponHolderSlot slot in weaponHolderSlots)
         {
@@ -33,7 +33,6 @@ public class WeaponSlotManager : MonoBehaviour
         {
             rightHandSlot.LoadWeaponModel(weaponItem);
 
-            // Posleme ID zbrane do Animatora, aby vedel aku "Combat Idle" animaciu ma hrat
             // Sending holdId from weapon to determine what hold layer to use
             if (weaponItem != null)
             {
