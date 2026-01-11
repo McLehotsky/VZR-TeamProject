@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f33036eb1c8747488949b818e61c5da, type: 3}
+  m_Name: LongSword
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponItem
+  itemName: Long Sword
+  itemIcon: {fileID: 0}
+  modelPrefab: {fileID: 181534, guid: 13af847dfa6dbe844ba4b7c902f98f67, type: 3}
+  isUnarmed: 0
+  modelPosition: {x: 0, y: -0.147, z: 0}
+  modelRotation: {x: 0, y: 0, z: 0}
+  modelScale: {x: 1, y: 1, z: 1}
+  holdTypeID: 1
+  physicalDamage: 17
+  physicalDamageHeavy: 25
+  staminaCost: 15
+  staminaCostHeavy: 30
+  Light_Attack_1: OH_Attack_1
+  Light_Attack_2: OH_Attack_2
+  Heavy_Attack_1: OH_Heavy_1

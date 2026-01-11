@@ -11,6 +11,8 @@ public class PlayerManager : MonoBehaviour
     PlayerInventory playerInventory;
     PlayerStats playerStats;
 
+    UIManager uiManager;
+
     [Header("Player Flags")]
     public bool isInteracting;
     public bool isStrafing;
@@ -37,6 +39,7 @@ public class PlayerManager : MonoBehaviour
         playerAttacker = GetComponent<PlayerAttacker>();
         playerInventory = GetComponent<PlayerInventory>();
         playerStats = GetComponent<PlayerStats>();
+        uiManager = GetComponent<UIManager>();
     }
 
     private void Update()
@@ -107,9 +110,11 @@ public class PlayerManager : MonoBehaviour
     {
         currentInteractableObject = interactable;
 
+        interactable.OnPlayerEnterInteraction(this);
+
         // Show UI
-        // if(uiManager != null)
-        //     uiManager.ShowInteractPopup(true, interactable.interactText);
+        if (uiManager != null)
+            uiManager.ShowInteractPopup(true, interactable.interactText);
     }
 
     public void ClearInteractableObject()
@@ -117,7 +122,7 @@ public class PlayerManager : MonoBehaviour
         currentInteractableObject = null;
 
         // Hide UI
-        // if(uiManager != null)
-        //     uiManager.ShowInteractPopup(false);
+        if (uiManager != null)
+            uiManager.ShowInteractPopup(false);
     }
 }

@@ -64,6 +64,10 @@ public class PlayerStats : MonoBehaviour, IDamageable
             currentHealth = 0;
             // Death logic
             animatorManager.PlayTargetAnimation("Death_01", true);
+            if (WorldGameManager.instance != null)
+            {
+                WorldGameManager.instance.PlayerDied();
+            }
         }
         else
         {
