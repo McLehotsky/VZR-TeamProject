@@ -10,6 +10,8 @@ public class DamageCollider : MonoBehaviour
     List<GameObject> hitEnemies = new List<GameObject>();
     Collider col;
 
+    [HideInInspector] public string targetTag;
+
     private void Awake()
     {
         col = GetComponent<Collider>();
@@ -31,18 +33,18 @@ public class DamageCollider : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // 1. Check if the collider belongs to an enemy
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag(targetTag))
         {
             // 2. Check if already hit
             if (!hitEnemies.Contains(other.gameObject))
             {
                 // 3. Apply damage
-                IDamageable enemy = other.GetComponent<IDamageable>();
+                IDamageable target = other.GetComponent<IDamageable>();
 
-                if (enemy != null)
+                if (target != null)
                 {
-                    enemy.TakeDamage(currentDamage);
-                    hitEnemies.Add(other.gameObject); // Zapamätaj si ho
+                    target.TakeDamage(currentDamage);
+                    hitEnemies.Add(other.gameObject);
                 }
             }
         }

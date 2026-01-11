@@ -31,6 +31,7 @@ public class EnemyStats : MonoBehaviour, IDamageable
         }
         else
         {
+            enemyManager.HandleRecovery();
             // Hit animation
             animatorManager.PlayTargetAnimation("Damage_01", true);
         }

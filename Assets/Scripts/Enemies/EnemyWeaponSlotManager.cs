@@ -40,6 +40,7 @@ public class EnemyWeaponSlotManager : MonoBehaviour
             if (rightHandDamageCollider != null)
             {
                 rightHandDamageCollider.currentDamage = weaponItem.physicalDamage;
+                rightHandDamageCollider.targetTag = "Player"; // Nastavenie cieľového tagu na "Player"
             }
 
             // 3. Nastavenie Animácií (Stance/Idle)

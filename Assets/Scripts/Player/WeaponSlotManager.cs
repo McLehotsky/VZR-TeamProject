@@ -39,6 +39,7 @@ public class WeaponSlotManager : MonoBehaviour
             if (weaponItem != null)
             {
                 rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
+                rightHandDamageCollider.targetTag = "Enemy"; // Set target tag for damage collider
                 animatorManager.SetWeaponType(weaponItem.holdTypeID);
             }
         }

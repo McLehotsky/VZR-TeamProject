@@ -33,10 +33,9 @@ public class WeaponHolderSlot : MonoBehaviour
             }
 
             // Reset position based on hand
-            // TODO: experiment with this feature for other weapon models
-            model.transform.localPosition = Vector3.zero;
-            model.transform.localRotation = Quaternion.identity;
-            model.transform.localScale = Vector3.one;
+            model.transform.localPosition = weaponItem.modelPosition;
+            model.transform.localRotation = Quaternion.Euler(weaponItem.modelRotation);
+            model.transform.localScale = weaponItem.modelScale;
         }
 
         currentWeaponModel = model;

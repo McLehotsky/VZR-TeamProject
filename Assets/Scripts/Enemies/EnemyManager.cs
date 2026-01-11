@@ -8,6 +8,7 @@ public class EnemyManager : MonoBehaviour
     EnemyWeaponSlotManager weaponSlotManager;
     EnemyStats enemyStats;
     NavMeshAgent navAgent;
+    EnemyAnimatorHook enemyAnimationHook;
 
     [Header("Target Info")]
     public Transform currentTarget; // The Player
@@ -40,6 +41,7 @@ public class EnemyManager : MonoBehaviour
         weaponSlotManager = GetComponent<EnemyWeaponSlotManager>();
         enemyStats = GetComponent<EnemyStats>();
         navAgent = GetComponent<NavMeshAgent>();
+        enemyAnimationHook = GetComponentInChildren<EnemyAnimatorHook>();
 
         // Auto-find player by Tag
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -171,6 +173,22 @@ public class EnemyManager : MonoBehaviour
                     currentState = AIState.Chase;
                 }
                 break;
+        }
+    }
+
+    public void HandleRecovery()
+    {
+        // 1. Resetujeme stav do Chase alebo Combat
+        // (Aby nezostal zaseknutý v Attack logike)
+        currentState = AIState.Chase;
+
+        // 2. Zastavíme NavMesh Agenta okamžite
+        navAgent.enabled = false;
+
+        // 3. Vypneme zbraň, ak práve útočil (Interruption)
+        if (enemyAnimationHook != null)
+        {
+            enemyAnimationHook.CloseRightWeaponCollider();
         }
     }
 
