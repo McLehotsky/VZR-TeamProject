@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerLocomotion : MonoBehaviour
@@ -6,6 +7,7 @@ public class PlayerLocomotion : MonoBehaviour
     InputHandler inputHandler;
     Rigidbody rb;
     Transform cameraObject;
+    PlayerStats playerStats;
 
     [Header("Movement Stats")]
     [SerializeField] float walkingSpeed = 2f;
@@ -13,18 +15,25 @@ public class PlayerLocomotion : MonoBehaviour
     [SerializeField] float sprintingSpeed = 8f;
     [SerializeField] float rotationSpeed = 10f;
 
+    [Header("Stamina Costs")]
+    public int sprintStaminaCost = 20; // Stamina cost per second while sprinting
+
     private void Awake()
     {
         playerManager = GetComponent<PlayerManager>();
         inputHandler = GetComponent<InputHandler>();
         rb = GetComponent<Rigidbody>();
         cameraObject = Camera.main.transform;
+        playerStats = GetComponent<PlayerStats>();
     }
 
     public void HandleAllMovement()
     {
         if (playerManager.isInteracting)
+        {
+            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
             return;
+        }
 
         HandleMovement();
         HandleRotation();
@@ -49,7 +58,12 @@ public class PlayerLocomotion : MonoBehaviour
 
         if (playerManager.isSprinting)
         {
+
             targetSpeed = sprintingSpeed;
+
+            // Drain stamina
+            playerStats.TakeStaminaDamage(sprintStaminaCost * Time.deltaTime);
+
         }
         else
         {
@@ -73,7 +87,7 @@ public class PlayerLocomotion : MonoBehaviour
         // Strafing / Lock on
         if (playerManager.isStrafing)
         {
-            // V Combat móde sa vždy chceme pozerať tam, kam kamera (alebo na nepriateľa)
+            // Lock on mode we are looking towards target 
             Vector3 targetDir = cameraObject.forward;
             targetDir.y = 0;
             targetDir.Normalize();
@@ -85,6 +99,7 @@ public class PlayerLocomotion : MonoBehaviour
         // Free Roam
         else
         {
+            // Reseting target direction
             Vector3 targetDir = Vector3.zero;
 
             targetDir = cameraObject.forward * inputHandler.vertical;

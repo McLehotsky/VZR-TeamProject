@@ -3,14 +3,16 @@ using UnityEngine;
 public class AnimatorHook : MonoBehaviour
 {
     PlayerAnimatorManager animatorManager;
+    WeaponSlotManager weaponSlotManager;
 
     private void Awake()
     {
-        // Nájde skript na rodičovskom objekte (Player)
+        // Get reference to PlayerAnimatorManager in parent
         animatorManager = GetComponentInParent<PlayerAnimatorManager>();
+        weaponSlotManager = GetComponentInParent<WeaponSlotManager>();
     }
 
-    // Túto funkciu zavolá Animation Event
+    // Function called by Animation Event to enable combo
     public void EnableCombo()
     {
         if (animatorManager != null)
@@ -19,12 +21,28 @@ public class AnimatorHook : MonoBehaviour
         }
     }
 
-    // Túto funkciu zavolá Animation Event (ak ju pridáš na koniec animácie)
+    // Function called by Animation Event to disable combo
     public void DisableCombo()
     {
         if (animatorManager != null)
         {
             animatorManager.DisableCombo();
+        }
+    }
+
+    public void OpenRightWeaponCollider()
+    {
+        if (weaponSlotManager != null)
+        {
+            weaponSlotManager.OpenRightDamageCollider();
+        }
+    }
+
+    public void CloseRightWeaponCollider()
+    {
+        if (weaponSlotManager != null)
+        {
+            weaponSlotManager.CloseRightDamageCollider();
         }
     }
 }

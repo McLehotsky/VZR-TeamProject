@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WeaponHolderSlot : MonoBehaviour
 {
-    public Transform parentOverride; // Ak chceme upravit poziciu
+    public Transform parentOverride;
     public bool isLeftHandSlot;
     public bool isRightHandSlot;
 
@@ -10,7 +10,7 @@ public class WeaponHolderSlot : MonoBehaviour
 
     public void LoadWeaponModel(WeaponItem weaponItem)
     {
-        // 1. Znicime staru zbran ak nejaka je
+        // Destroy old weapon if alreadt equipec
         UnloadWeapon();
 
         if (weaponItem == null)
@@ -19,7 +19,7 @@ public class WeaponHolderSlot : MonoBehaviour
             return;
         }
 
-        // 2. Spawneme novy model
+        // Spawn model into correct position
         GameObject model = Instantiate(weaponItem.modelPrefab) as GameObject;
         if (model != null)
         {
@@ -32,7 +32,8 @@ public class WeaponHolderSlot : MonoBehaviour
                 model.transform.parent = transform;
             }
 
-            // Resetneme poziciu a rotaciu voci ruke
+            // Reset position based on hand
+            // TODO: experiment with this feature for other weapon models
             model.transform.localPosition = Vector3.zero;
             model.transform.localRotation = Quaternion.identity;
             model.transform.localScale = Vector3.one;
