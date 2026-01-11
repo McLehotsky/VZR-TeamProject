@@ -17,8 +17,10 @@ MonoBehaviour:
   modelPrefab: {fileID: 106878, guid: d9997adaf286f9b45a050f836bce2f10, type: 3}
   isUnarmed: 0
   holdTypeID: 2
-  physicalDamage: 25
-  staminaCost: 20
+  physicalDamage: 30
+  physicalDamageHeavy: 60
+  staminaCost: 25
+  staminaCostHeavy: 50
   Light_Attack_1: TH_Attack_1
   Light_Attack_2: TH_Attack_2
   Heavy_Attack_1: TH_Heavy_1

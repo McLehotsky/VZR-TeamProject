@@ -18,6 +18,8 @@ public class PlayerManager : MonoBehaviour
     [Header("Combat Flags")]
     public bool canDoCombo;
 
+    [Header("Current Equipment")]
+    public WeaponItem currentWeapon;
     public WeaponItem startingWeapon;
 
     private void Awake()
@@ -35,8 +37,8 @@ public class PlayerManager : MonoBehaviour
         if (startingWeapon != null)
         {
             // Seting starting weapon to right hand (FALSE = RIGHT, TRUE = LEFT)
+            currentWeapon = startingWeapon;
             weaponSlotManager.LoadWeaponOnSlot(startingWeapon, false);
-            playerAttacker.currentWeapon = startingWeapon;
         }
     }
 

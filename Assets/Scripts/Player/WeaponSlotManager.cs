@@ -7,6 +7,8 @@ public class WeaponSlotManager : MonoBehaviour
 
     PlayerAnimatorManager animatorManager;
 
+    public DamageCollider rightHandDamageCollider;
+
     private void Awake()
     {
         animatorManager = GetComponent<PlayerAnimatorManager>();
@@ -36,8 +38,25 @@ public class WeaponSlotManager : MonoBehaviour
             // Sending holdId from weapon to determine what hold layer to use
             if (weaponItem != null)
             {
+                rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
                 animatorManager.SetWeaponType(weaponItem.holdTypeID);
             }
+        }
+    }
+
+    public void OpenRightDamageCollider()
+    {
+        if (rightHandDamageCollider != null)
+        {
+            rightHandDamageCollider.EnableDamageCollider();
+        }
+    }
+
+    public void CloseRightDamageCollider()
+    {
+        if (rightHandDamageCollider != null)
+        {
+            rightHandDamageCollider.DisableDamageCollider();
         }
     }
 }

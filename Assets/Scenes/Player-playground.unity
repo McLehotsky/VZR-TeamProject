@@ -132,9 +132,10 @@ GameObject:
   - component: {fileID: 145233796}
   - component: {fileID: 145233795}
   - component: {fileID: 145233794}
+  - component: {fileID: 145233799}
   m_Layer: 6
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,7 +155,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -244,6 +245,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &145233799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145233793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c27952be4c88584b8acbacb50711853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
+  health: 200
 --- !u!1001 &156837332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3433,6 +3447,7 @@ MonoBehaviour:
   isSprinting: 0
   isLockedOn: 0
   canDoCombo: 0
+  currentWeapon: {fileID: 0}
   startingWeapon: {fileID: 11400000, guid: b73bd35dce377bb4d9f4ee2391f06fb8, type: 2}
 --- !u!114 &1467444400
 MonoBehaviour:
@@ -3544,6 +3559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1544ae92798e5654fa021d4a195fa501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSlotManager
+  rightHandDamageCollider: {fileID: 0}
 --- !u!114 &1467444406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3556,7 +3572,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe6dcfb1fd95474baecbb6a7b9807a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttacker
-  currentWeapon: {fileID: 0}
   lastAttack: 
 --- !u!1001 &1475659663
 PrefabInstance:
@@ -3868,9 +3883,10 @@ GameObject:
   - component: {fileID: 1576499101}
   - component: {fileID: 1576499100}
   - component: {fileID: 1576499099}
+  - component: {fileID: 1576499104}
   m_Layer: 6
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3890,7 +3906,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3980,6 +3996,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1576499104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576499098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c27952be4c88584b8acbacb50711853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
+  health: 100
 --- !u!1001 &1615113972
 PrefabInstance:
   m_ObjectHideFlags: 0

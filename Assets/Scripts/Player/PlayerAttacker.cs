@@ -7,10 +7,6 @@ public class PlayerAttacker : MonoBehaviour
     PlayerManager playerManager; // Reference to PlayerManager for weapon and combat flags
     WeaponSlotManager weaponSlotManager; // For information about current weapon
 
-
-    // TODO reference to current weapon from PlayerManager
-    public WeaponItem currentWeapon;
-
     public string lastAttack;
 
 
@@ -24,22 +20,32 @@ public class PlayerAttacker : MonoBehaviour
 
     public void HandleCombatInput()
     {
+        if (playerManager.currentWeapon == null)
+            return;
+
         if (inputHandler.rb_Input)
         {
             // Light Attack
-            HandleLightAttack(currentWeapon);
+            HandleLightAttack(playerManager.currentWeapon);
         }
 
         if (inputHandler.rt_Input)
         {
             // Heavy Attack
-            HandleHeavyAttack(currentWeapon);
+            HandleHeavyAttack(playerManager.currentWeapon);
         }
     }
 
     // Light attack logic
     private void HandleLightAttack(WeaponItem weapon)
     {
+        //Pass Physical Damage to the Weapon Collider
+        // We do this here to ensure the correct damage is set before the attack animation plays
+        if (weaponSlotManager.rightHandDamageCollider != null)
+        {
+            weaponSlotManager.rightHandDamageCollider.currentDamage = weapon.physicalDamage;
+        }
+
         // Check if we can do a combo
         if (playerManager.canDoCombo)
         {
@@ -70,6 +76,13 @@ public class PlayerAttacker : MonoBehaviour
     // Heavy attack logic
     private void HandleHeavyAttack(WeaponItem weapon)
     {
+
+        // Pass Heavy Damage to the Weapon Collider
+        if (weaponSlotManager.rightHandDamageCollider != null)
+        {
+            weaponSlotManager.rightHandDamageCollider.currentDamage = weapon.physicalDamageHeavy;
+        }
+
         inputHandler.rt_Input = false;
 
         if (playerManager.isInteracting)
