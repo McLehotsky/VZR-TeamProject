@@ -9,4 +9,9 @@ public class Interactable : MonoBehaviour
     {
         Debug.Log("Interacted with base object");
     }
+
+    public virtual void OnPlayerEnterInteraction(PlayerManager playerManager)
+    {
+        // Optional: Show UI prompt for interaction
+    }
 }

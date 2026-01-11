@@ -5,10 +5,13 @@ public class PlayerInventory : MonoBehaviour
 {
     WeaponSlotManager weaponSlotManager;
     PlayerManager playerManager;
+    PlayerUIManager playerUIManager;
 
     [Header("Inventory Lists")]
     // List of weapons found/picked up by the player
     public List<WeaponItem> weaponsInRightHandSlots = new List<WeaponItem>();
+    [Header("Key Items")]
+    public List<Item> keyItems = new List<Item>();
 
     [Header("Current Indices")]
     public int currentRightWeaponIndex = 0;
@@ -20,6 +23,7 @@ public class PlayerInventory : MonoBehaviour
     {
         weaponSlotManager = GetComponent<WeaponSlotManager>();
         playerManager = GetComponent<PlayerManager>();
+        playerUIManager = GetComponent<PlayerUIManager>();
     }
 
     private void Start()
@@ -36,6 +40,13 @@ public class PlayerInventory : MonoBehaviour
             weaponSlotManager.LoadWeaponOnSlot(weaponsInRightHandSlots[currentRightWeaponIndex], false);
             playerManager.currentWeapon = weaponsInRightHandSlots[currentRightWeaponIndex];
         }
+
+        if (playerUIManager != null && weaponsInRightHandSlots.Count > 0)
+        {
+            playerUIManager.UpdateCurrentWeaponUI(weaponsInRightHandSlots[currentRightWeaponIndex]);
+        }
+
+        UpdateEmberCount();
     }
 
     public void ChangeRightWeapon()
@@ -66,5 +77,30 @@ public class PlayerInventory : MonoBehaviour
 
         // Debug
         Debug.Log("Swapped to: " + selectedWeapon.itemName);
+
+        if (playerUIManager != null)
+        {
+            playerUIManager.UpdateCurrentWeaponUI(selectedWeapon);
+        }
+    }
+
+    public void UpdateEmberCount()
+    {
+        int emberCount = 0;
+
+        // Prejdeme keyItems a spočítame tie, čo sa volajú "Ember Core"
+        // (Alebo ak máš v keyItems LEN embery, stačí keyItems.Count)
+        foreach (Item item in keyItems)
+        {
+            if (item.itemName == "Ember Core") // Uisti sa, že názov sedí presne s Itemom!
+            {
+                emberCount++;
+            }
+        }
+
+        if (playerUIManager != null)
+        {
+            playerUIManager.UpdateEmberCoreCountUI(emberCount);
+        }
     }
 }
