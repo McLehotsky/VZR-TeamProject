@@ -7,6 +7,11 @@ public class WeaponItem : Item
     public GameObject modelPrefab;
     public bool isUnarmed;
 
+    [Header("Model Settings")]
+    public Vector3 modelPosition = Vector3.zero;
+    public Vector3 modelRotation = Vector3.zero;
+    public Vector3 modelScale = Vector3.one; // Defaultne (1,1,1)
+
     [Header("Animation Settings")]
     // 1H (1), 2H (2), Polearm (3)
     public int holdTypeID;

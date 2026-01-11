@@ -59,15 +59,16 @@ public class PlayerStats : MonoBehaviour, IDamageable
             playerUIManager.SetCurrentHealth(currentHealth);
         }
 
-        // Play hit animation
-        animatorManager.PlayTargetAnimation("Damage_01", true);
-
         if (currentHealth <= 0)
         {
             currentHealth = 0;
+            // Death logic
             animatorManager.PlayTargetAnimation("Death_01", true);
-            // Disable movement and other actions
-            //TODO
+        }
+        else
+        {
+            // Hit reaction
+            animatorManager.PlayTargetAnimation("Damage_01", true);
         }
     }
 

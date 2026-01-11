@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f33036eb1c8747488949b818e61c5da, type: 3}
-  m_Name: Scythe
+  m_Name: Dagger
   m_EditorClassIdentifier: Assembly-CSharp::WeaponItem
-  itemName: Scythe
+  itemName: Dagger
   itemIcon: {fileID: 0}
-  modelPrefab: {fileID: 107148, guid: 2af05eac9619e09419fa737d4829b030, type: 3}
+  modelPrefab: {fileID: 176486, guid: 00565c6238126424599242cffe0ede5b, type: 3}
   isUnarmed: 0
-  modelPosition: {x: -0.112, y: -0.632, z: -0.023}
-  modelRotation: {x: 0, y: 180, z: 0}
+  modelPosition: {x: 0, y: -0.073, z: 0}
+  modelRotation: {x: 0, y: 0, z: 0}
   modelScale: {x: 1, y: 1, z: 1}
-  holdTypeID: 2
-  physicalDamage: 25
-  physicalDamageHeavy: 40
-  staminaCost: 25
-  staminaCostHeavy: 40
-  Light_Attack_1: TH_Attack_1
-  Light_Attack_2: TH_Attack_2
-  Heavy_Attack_1: TH_Heavy_1
+  holdTypeID: 1
+  physicalDamage: 10
+  physicalDamageHeavy: 20
+  staminaCost: 5
+  staminaCostHeavy: 10
+  Light_Attack_1: OH_Attack_1
+  Light_Attack_2: OH_Attack_2
+  Heavy_Attack_1: OH_Heavy_1

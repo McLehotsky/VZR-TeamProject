@@ -10,20 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f33036eb1c8747488949b818e61c5da, type: 3}
-  m_Name: Scythe
+  m_Name: Iron Sword
   m_EditorClassIdentifier: Assembly-CSharp::WeaponItem
-  itemName: Scythe
+  itemName: Iron Sword
   itemIcon: {fileID: 0}
-  modelPrefab: {fileID: 107148, guid: 2af05eac9619e09419fa737d4829b030, type: 3}
+  modelPrefab: {fileID: 131468, guid: f61def225eac3e247985f6679965a655, type: 3}
   isUnarmed: 0
-  modelPosition: {x: -0.112, y: -0.632, z: -0.023}
-  modelRotation: {x: 0, y: 180, z: 0}
-  modelScale: {x: 1, y: 1, z: 1}
-  holdTypeID: 2
-  physicalDamage: 25
-  physicalDamageHeavy: 40
-  staminaCost: 25
-  staminaCostHeavy: 40
-  Light_Attack_1: TH_Attack_1
-  Light_Attack_2: TH_Attack_2
-  Heavy_Attack_1: TH_Heavy_1
+  holdTypeID: 1
+  physicalDamage: 17
+  physicalDamageHeavy: 25
+  staminaCost: 15
+  staminaCostHeavy: 30
+  Light_Attack_1: OH_Attack_1
+  Light_Attack_2: OH_Attack_2
+  Heavy_Attack_1: OH_Heavy_1
