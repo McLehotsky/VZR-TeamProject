@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ResetAnimatorBool : StateMachineBehaviour
 {
-    public string targetBool; // Meno premennej (napr. "IsInteracting")
-    public bool status;       // Na aku hodnotu ju resetnut (napr. false)
+    public string targetBool;
+    public bool status;
 
-    // Táto funkcia sa zavolá AUTOMATICKY, keď animácia skončí (alebo prejde do inej)
+    // This method is called when the state machine exits a state, used to reset the specified boolean parameter
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool(targetBool, status);

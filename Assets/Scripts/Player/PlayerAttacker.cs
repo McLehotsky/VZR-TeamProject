@@ -4,11 +4,11 @@ public class PlayerAttacker : MonoBehaviour
 {
     PlayerAnimatorManager animatorManager;
     InputHandler inputHandler;
-    PlayerManager playerManager; // Potrebujeme vediet aku zbran drzime (neskor)
-    WeaponSlotManager weaponSlotManager; // Ak by sme potrebovali info o zbrani
+    PlayerManager playerManager; // Reference to PlayerManager for weapon and combat flags
+    WeaponSlotManager weaponSlotManager; // For information about current weapon
 
 
-    // Dočasne sem dáme referenciu na zbraň, neskôr to budeme brať z PlayerManagera
+    // TODO reference to current weapon from PlayerManager
     public WeaponItem currentWeapon;
 
     public string lastAttack;
@@ -37,35 +37,37 @@ public class PlayerAttacker : MonoBehaviour
         }
     }
 
+    // Light attack logic
     private void HandleLightAttack(WeaponItem weapon)
     {
-        // COMBO LOGIKA
+        // Check if we can do a combo
         if (playerManager.canDoCombo)
         {
-            // Sme v okne pre kombo, takže ak stlačíme tlačidlo, ideme ďalej
+            // We are in a combo, so we can chain the next attack
             inputHandler.rb_Input = false;
 
-            // Ak bol posledný útok "Attack 1", prehráme "Attack 2"
+            // Determine which attack to play next based on the last attack
             if (lastAttack == weapon.Light_Attack_1)
             {
                 animatorManager.PlayTargetAnimation(weapon.Light_Attack_2, true);
-                lastAttack = weapon.Light_Attack_2; // Uložíme si, že teraz sme v 2. útoku
+                lastAttack = weapon.Light_Attack_2; // Store the name
             }
-            // Tu by sme mohli pokračovať (Ak last == Attack 2 -> Play Attack 3...)
+            // Possible continuation for more attacks can be added here
         }
         else
         {
-            // Nie sme v combe (buď stojíme, alebo sme combo nestihli)
+            // Not in a combo
             if (playerManager.isInteracting)
-                return; // Ak práve útočíme a nie je otvorené combo okno, ignorujeme kliknutie
+                return;
 
-            // ŠTART COMB - Prvý útok
+            // Start a new light attack
             inputHandler.rb_Input = false;
             animatorManager.PlayTargetAnimation(weapon.Light_Attack_1, true);
-            lastAttack = weapon.Light_Attack_1; // Uložíme si názov
+            lastAttack = weapon.Light_Attack_1; // Store the name
         }
     }
 
+    // Heavy attack logic
     private void HandleHeavyAttack(WeaponItem weapon)
     {
         inputHandler.rt_Input = false;
