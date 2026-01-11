@@ -17,10 +17,14 @@ public class InputHandler : MonoBehaviour
     [Header("Action Input")]
     public bool sprint_Input;
     public bool lockOn_Input;
+    public bool a_Input;
 
     [Header("Combat Inputs")]
     public bool rb_Input; // Light Attack
     public bool rt_Input; // Heavy Attack
+
+    [Header("Quick Slots Inputs")]
+    public bool d_Pad_Right; // Switch to Right Weapon
 
     // Call when Player activates
     private void OnEnable()
@@ -56,6 +60,12 @@ public class InputHandler : MonoBehaviour
             // Combat Inputs
             inputActions.Player.RB.performed += i => rb_Input = true;
             inputActions.Player.RT.performed += i => rt_Input = true;
+
+            // Quick Slots Inputs
+            inputActions.Player.SwitchRightWeapon.performed += i => d_Pad_Right = true;
+
+            // Interact Input
+            inputActions.Player.Interact.performed += i => a_Input = true;
         }
 
         inputActions.Enable();
