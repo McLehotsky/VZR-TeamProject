@@ -6,6 +6,7 @@ public class PlayerAttacker : MonoBehaviour
     InputHandler inputHandler;
     PlayerManager playerManager; // Reference to PlayerManager for weapon and combat flags
     WeaponSlotManager weaponSlotManager; // For information about current weapon
+    PlayerStats playerStats;
 
     public string lastAttack;
 
@@ -16,6 +17,7 @@ public class PlayerAttacker : MonoBehaviour
         inputHandler = GetComponent<InputHandler>();
         playerManager = GetComponent<PlayerManager>();
         weaponSlotManager = GetComponent<WeaponSlotManager>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     public void HandleCombatInput()
@@ -39,6 +41,16 @@ public class PlayerAttacker : MonoBehaviour
     // Light attack logic
     private void HandleLightAttack(WeaponItem weapon)
     {
+        // Check for stamina
+        if (!playerStats.HasEnoughStamina(weapon.staminaCost))
+        {
+            // fix: prevent spamming attack input when out of stamina
+            inputHandler.rb_Input = false;
+            return;
+        }
+
+        playerStats.TakeStaminaDamage(weapon.staminaCost);
+
         //Pass Physical Damage to the Weapon Collider
         // We do this here to ensure the correct damage is set before the attack animation plays
         if (weaponSlotManager.rightHandDamageCollider != null)
@@ -76,6 +88,14 @@ public class PlayerAttacker : MonoBehaviour
     // Heavy attack logic
     private void HandleHeavyAttack(WeaponItem weapon)
     {
+        // Check for stamina
+        if (!playerStats.HasEnoughStamina(weapon.staminaCostHeavy))
+        {
+            inputHandler.rt_Input = false;
+            return;
+        }
+
+        playerStats.TakeStaminaDamage(weapon.staminaCostHeavy);
 
         // Pass Heavy Damage to the Weapon Collider
         if (weaponSlotManager.rightHandDamageCollider != null)

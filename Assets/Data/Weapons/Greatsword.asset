@@ -19,7 +19,7 @@ MonoBehaviour:
   holdTypeID: 2
   physicalDamage: 30
   physicalDamageHeavy: 60
-  staminaCost: 25
+  staminaCost: 20
   staminaCostHeavy: 50
   Light_Attack_1: TH_Attack_1
   Light_Attack_2: TH_Attack_2

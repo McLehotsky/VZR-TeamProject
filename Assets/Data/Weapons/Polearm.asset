@@ -19,7 +19,7 @@ MonoBehaviour:
   holdTypeID: 3
   physicalDamage: 30
   physicalDamageHeavy: 50
-  staminaCost: 30
+  staminaCost: 20
   staminaCostHeavy: 50
   Light_Attack_1: Polearm_Attack_1
   Light_Attack_2: Polearm_Attack_2

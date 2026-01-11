@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour
     WeaponSlotManager weaponSlotManager;
     PlayerAttacker playerAttacker;
     PlayerInventory playerInventory;
+    PlayerStats playerStats;
 
     [Header("Player Flags")]
     public bool isInteracting;
@@ -35,6 +36,7 @@ public class PlayerManager : MonoBehaviour
         weaponSlotManager = GetComponent<WeaponSlotManager>();
         playerAttacker = GetComponent<PlayerAttacker>();
         playerInventory = GetComponent<PlayerInventory>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     private void Update()
@@ -55,7 +57,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         // Sprint logic
-        if (inputHandler.sprint_Input && inputHandler.moveAmount > 0.5f)
+        if (inputHandler.sprint_Input && inputHandler.moveAmount > 0.5f && playerStats.currentStamina > 0)
             isSprinting = true;
         else
             isSprinting = false;
