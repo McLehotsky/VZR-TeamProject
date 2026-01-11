@@ -4573,7 +4573,7 @@ MonoBehaviour:
   runningSpeed: 5
   sprintingSpeed: 8
   rotationSpeed: 10
-  sprintStaminaCost: 10
+  sprintStaminaCost: 35
 --- !u!54 &1467444401
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4713,7 +4713,7 @@ MonoBehaviour:
   currentHealth: 0
   maxStamina: 100
   currentStamina: 0
-  staminaRegenAmount: 15
+  staminaRegenAmount: 50
   staminaRegenDelay: 2
 --- !u!114 &1467444409
 MonoBehaviour:
