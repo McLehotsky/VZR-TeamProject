@@ -7,7 +7,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
     PlayerUIManager playerUIManager;
 
     [Header("Health Stats")]
-    public int maxHealth = 100;
+    public int maxHealth = 300;
     public int currentHealth;
 
     [Header("Stamina Stats")]
@@ -133,5 +133,24 @@ public class PlayerStats : MonoBehaviour, IDamageable
             Debug.Log("NEDOSTATOK STAMINY!");
             return false;
         }
+    }
+
+    public void Rest()
+    {
+        // 1. Reset hodnôt
+        currentHealth = maxHealth;
+        currentStamina = maxStamina;
+
+        // 2. Update UI
+        if (playerUIManager != null)
+        {
+            playerUIManager.SetCurrentHealth(currentHealth);
+            playerUIManager.SetCurrentStamina(currentStamina);
+        }
+
+        // 3. Voliteľné: Tu by sme mohli resetovať aj mŕtvych nepriateľov (respawn),
+        // ale to zatiaľ nemáme implementované.
+
+        Debug.Log("Player rested. Health and Stamina restored.");
     }
 }

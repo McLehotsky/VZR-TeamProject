@@ -16,11 +16,14 @@ MonoBehaviour:
   itemIcon: {fileID: 0}
   modelPrefab: {fileID: 106878, guid: d9997adaf286f9b45a050f836bce2f10, type: 3}
   isUnarmed: 0
+  modelPosition: {x: 0, y: 0, z: 0}
+  modelRotation: {x: 0, y: 0, z: 0}
+  modelScale: {x: 1, y: 1, z: 1}
   holdTypeID: 2
-  physicalDamage: 30
-  physicalDamageHeavy: 60
-  staminaCost: 30
-  staminaCostHeavy: 60
+  physicalDamage: 105
+  physicalDamageHeavy: 155
+  staminaCost: 50
+  staminaCostHeavy: 85
   Light_Attack_1: TH_Attack_1
   Light_Attack_2: TH_Attack_2
   Heavy_Attack_1: TH_Heavy_1

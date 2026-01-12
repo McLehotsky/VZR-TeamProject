@@ -20,10 +20,10 @@ MonoBehaviour:
   modelRotation: {x: 0, y: 180, z: 0}
   modelScale: {x: 1, y: 1, z: 1}
   holdTypeID: 2
-  physicalDamage: 25
-  physicalDamageHeavy: 40
-  staminaCost: 25
-  staminaCostHeavy: 40
+  physicalDamage: 60
+  physicalDamageHeavy: 90
+  staminaCost: 35
+  staminaCostHeavy: 65
   Light_Attack_1: TH_Attack_1
   Light_Attack_2: TH_Attack_2
   Heavy_Attack_1: TH_Heavy_1
