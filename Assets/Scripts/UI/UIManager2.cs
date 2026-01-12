@@ -57,6 +57,24 @@ public class UIManager : MonoBehaviour
         notificationCoroutine = StartCoroutine(HideNotificationAfterTime());
     }
 
+    public void DisplayGateNotification()
+    {
+        // 1. Nastavíme text
+        if (itemNotificationText != null)
+            itemNotificationText.text = "Gate Has Fallen!";
+
+        // 2. Zapneme popup
+        if (itemNotificationPopup != null)
+            itemNotificationPopup.SetActive(true);
+
+        // 3. Ak už beží odpočítavanie (zobral si iný item pred chvíľou), resetujeme ho
+        if (notificationCoroutine != null)
+            StopCoroutine(notificationCoroutine);
+
+        // 4. Spustíme nové odpočítavanie
+        notificationCoroutine = StartCoroutine(HideNotificationAfterTime());
+    }
+
     private IEnumerator HideNotificationAfterTime()
     {
         // Čakáme 2 sekundy

@@ -3438,9 +3438,11 @@ MonoBehaviour:
   detectionRadius: 5
   attackRange: 1.5
   stopChaseDistance: 10
-  patrolPoints: []
+  patrolPoints:
+  - {fileID: 4484133886298627246}
+  - {fileID: 3506837192403208463}
   currentPatrolIndex: 0
-  currentWeapon: {fileID: 11400000, guid: b5aeb73e23d1ecb4b971252607b473aa, type: 2}
+  currentWeapon: {fileID: 11400000, guid: 0dde1f3937a36f249906f31c31fb0b7c, type: 2}
   attackCooldown: 2
   isInteracting: 0
   currentState: 0
