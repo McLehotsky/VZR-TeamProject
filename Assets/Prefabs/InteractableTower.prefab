@@ -5064,6 +5064,7 @@ MonoBehaviour:
   requiredItem: {fileID: 11400000, guid: 12041666a9c1dfb4d8583458e754b72c, type: 2}
   fireParticle: {fileID: 6961607261881616007}
   fogObjectsToDisable: []
+  lightTowerSound: {fileID: 8300000, guid: 035f08705b0a1a94b91436596c8aafb7, type: 3}
 --- !u!1 &8925938639273383465
 GameObject:
   m_ObjectHideFlags: 0

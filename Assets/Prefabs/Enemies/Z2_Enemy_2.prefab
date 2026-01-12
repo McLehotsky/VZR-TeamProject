@@ -1173,6 +1173,8 @@ GameObject:
   - component: {fileID: 5703408231496860039}
   - component: {fileID: 5067715579779048308}
   - component: {fileID: 3508527933236793592}
+  - component: {fileID: 7206816591412530964}
+  - component: {fileID: 4275574590367469051}
   m_Layer: 0
   m_Name: Character_Soldier_02_Orange
   m_TagString: Untagged
@@ -1235,6 +1237,122 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 727f27f9d780a6e479814a4b5ae77145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimatorHook
+--- !u!114 &7206816591412530964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2683469262656728993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3748cc3c312903941913947f1521bbc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AttackSFX
+  audioSource: {fileID: 4275574590367469051}
+  swoosh1: {fileID: 8300000, guid: 2ab2860fa7e834a43954b147d99da4b2, type: 3}
+  swoosh2: {fileID: 8300000, guid: 00d377daf6bba684e8fc1345c16764ab, type: 3}
+  punch1: {fileID: 8300000, guid: 2c493a4b80556ab4aa45120a9a401861, type: 3}
+  punch2: {fileID: 8300000, guid: f8aabfefc18d43546b90664149ac192b, type: 3}
+  death1: {fileID: 8300000, guid: 276bb833664f83446b4b1b9e12b74f08, type: 3}
+  death2: {fileID: 8300000, guid: 3a31912f7a21ba344b6ab5f5b712f84e, type: 3}
+--- !u!82 &4275574590367469051
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2683469262656728993}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.497
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2692518096019450824
 GameObject:
   m_ObjectHideFlags: 0
