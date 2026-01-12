@@ -12,6 +12,8 @@ public class LightableTower : Interactable
     [Header("Environment Changes")]
     public List<GameObject> fogObjectsToDisable;
 
+    public AudioClip lightTowerSound;
+
     bool isLit = false;
 
     private void Start()
@@ -73,6 +75,7 @@ public class LightableTower : Interactable
 
     void IgniteTower()
     {
+        AudioSource.PlayClipAtPoint(lightTowerSound, transform.position, 0.3f);
         isLit = true;
 
         // Vizuály

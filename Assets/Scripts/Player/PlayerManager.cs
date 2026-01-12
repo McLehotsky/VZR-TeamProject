@@ -30,6 +30,7 @@ public class PlayerManager : MonoBehaviour
 
     [Header("Interaction")]
     public Interactable currentInteractableObject;
+    public AudioClip pickupSound;
 
     private void Awake()
     {
@@ -105,6 +106,7 @@ public class PlayerManager : MonoBehaviour
 
             if (currentInteractableObject != null)
             {
+                AudioSource.PlayClipAtPoint(pickupSound, transform.position, 0.5f);
                 currentInteractableObject.Interact(this);
             }
         }
