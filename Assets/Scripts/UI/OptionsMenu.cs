@@ -9,6 +9,9 @@ public class OptionsMenu : MonoBehaviour
     public Slider sensitivitySlider;
     // public Toggle fullscreenToggle; // Tvoj checkbox "X"
 
+    public GameObject playerObject;
+    private PlayerLocomotion playerLocomotion;
+
     // Data save keys
     private const string PREF_VOLUME = "volume";
     private const string PREF_SENSITIVITY = "sensitivity";
@@ -16,11 +19,12 @@ public class OptionsMenu : MonoBehaviour
 
     void Start()
     {
+        playerLocomotion = playerObject.GetComponent<PlayerLocomotion>();
         // 1. Nacitanie a nastavenie Hlasitosti
         // Default hodnota je 1 (max), ak nic nie je ulozene
         float savedVolume = PlayerPrefs.GetFloat(PREF_VOLUME, 1f);
         volumeSlider.value = savedVolume;
-        AudioListener.volume = savedVolume; 
+        AudioListener.volume = savedVolume;
 
         // 2. Nacitanie a nastavenie Fullscreenu
         // 1 = true, 0 = false. Default je 1 (fullscreen)
@@ -29,9 +33,9 @@ public class OptionsMenu : MonoBehaviour
 
         // 3. Nacitanie a nastavenie Senzitivity
         // Default napr. 1.0f (alebo ina hodnota podla tvojej hry)
-        float savedSens = PlayerPrefs.GetFloat(PREF_SENSITIVITY, 1.0f);
+        float savedSens = PlayerPrefs.GetFloat(PREF_SENSITIVITY, 10.0f);
         sensitivitySlider.value = savedSens;
-        
+
         // Poznámka: Senzitivitu musi citat aj tvoj skript na pohyb kamery!
     }
 
@@ -79,7 +83,7 @@ public class OptionsMenu : MonoBehaviour
         // Ulozime do PlayerPrefs, aby si to tvoj PlayerController mohol precitat
         PlayerPrefs.SetFloat(PREF_SENSITIVITY, sensitivity);
         PlayerPrefs.Save();
-        
+
         // Ak mas pristup k Player skriptu priamo, mozes to aktualizovat aj tu.
         // Napr: PlayerController.instance.mouseSensitivity = sensitivity;
     }

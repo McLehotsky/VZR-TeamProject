@@ -11,6 +11,8 @@ public class PlayerManager : MonoBehaviour
     PlayerInventory playerInventory;
     PlayerStats playerStats;
 
+    UIController uiController;
+
     UIManager uiManager;
 
     [Header("Player Flags")]
@@ -40,6 +42,7 @@ public class PlayerManager : MonoBehaviour
         playerInventory = GetComponent<PlayerInventory>();
         playerStats = GetComponent<PlayerStats>();
         uiManager = GetComponent<UIManager>();
+        uiController = GetComponent<UIController>();
     }
 
     private void Update()
@@ -74,6 +77,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         CheckForInteraction();
+        CheckForPausedGame();
 
         animatorManager.UpdateAnimatorValues(inputHandler.horizontal, inputHandler.vertical, isSprinting);
     }
@@ -124,5 +128,26 @@ public class PlayerManager : MonoBehaviour
         // Hide UI
         if (uiManager != null)
             uiManager.ShowInteractPopup(false);
+    }
+
+    public void CheckForPausedGame()
+    {
+        // Game is not paused
+        if (uiController != null && !uiController.pauseMenuCanvas.activeSelf)
+        {
+            if (inputHandler.escape_Input)
+            {
+                inputHandler.escape_Input = false; // Reset input
+                uiController.PauseGame();
+            }
+        }
+        else // Game is paused
+        {
+            if (inputHandler.escape_Input)
+            {
+                inputHandler.escape_Input = false; // Reset input
+                uiController.ResumeGame();
+            }
+        }
     }
 }

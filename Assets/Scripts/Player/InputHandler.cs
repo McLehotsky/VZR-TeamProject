@@ -25,6 +25,7 @@ public class InputHandler : MonoBehaviour
 
     [Header("Quick Slots Inputs")]
     public bool d_Pad_Right; // Switch to Right Weapon
+    public bool escape_Input;
 
     // Call when Player activates
     private void OnEnable()
@@ -66,6 +67,9 @@ public class InputHandler : MonoBehaviour
 
             // Interact Input
             inputActions.Player.Interact.performed += i => a_Input = true;
+
+            // Escape Input
+            inputActions.Player.ESC.performed += i => escape_Input = true;
         }
 
         inputActions.Enable();

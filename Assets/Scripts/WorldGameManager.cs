@@ -34,6 +34,20 @@ public class WorldGameManager : MonoBehaviour
         CheckWinCondition();
     }
 
+    public void Pause()
+    {
+        Debug.Log("Game Paused");
+        //Pause tinme
+        Time.timeScale = 0f;
+    }
+
+    public void Resume()
+    {
+        Debug.Log("Game Resumed");
+        //Resume time
+        Time.timeScale = 1f;
+    }
+
     public void PlayerDied()
     {
         Debug.Log("GAME OVER");
