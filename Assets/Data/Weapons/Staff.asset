@@ -21,7 +21,7 @@ MonoBehaviour:
   modelScale: {x: 1, y: 1, z: 1}
   holdTypeID: 3
   physicalDamage: 26
-  physicalDamageHeavy: 50
+  physicalDamageHeavy: 36
   staminaCost: 25
   staminaCostHeavy: 50
   Light_Attack_1: Polearm_Attack_1

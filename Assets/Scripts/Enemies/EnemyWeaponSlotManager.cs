@@ -8,11 +8,14 @@ public class EnemyWeaponSlotManager : MonoBehaviour
     DamageCollider leftHandDamageCollider;
     DamageCollider rightHandDamageCollider;
 
+    EnemyAnimatorManager animatorManager;
+
     Animator animator;
 
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
+        animatorManager = GetComponent<EnemyAnimatorManager>();
 
         // Nájdenie slotov na kostiach
         WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
@@ -46,14 +49,7 @@ public class EnemyWeaponSlotManager : MonoBehaviour
             // 3. Nastavenie Animácií (Stance/Idle)
             if (weaponItem != null)
             {
-                // Toto je dôležité! Voláme priamo Animator, lebo EnemyAnimatorManager 
-                // zatiaľ nemá funkciu SetWeaponType, ale môžeme ju tam pridať, 
-                // alebo to nastaviť priamo tu:
-                animator.SetInteger("WeaponType", weaponItem.holdTypeID);
-
-                // TU BY SME MALI ZAVOLAŤ PREPÍNANIE VRSTIEV (Layers)
-                // Ideálne je pridať metódu SetWeaponType aj do EnemyAnimatorManagera
-                // a zavolať ju odtiaľto.
+                animatorManager.SetWeaponType(weaponItem.holdTypeID);
             }
         }
     }
