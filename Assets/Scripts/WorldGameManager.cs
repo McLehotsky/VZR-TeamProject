@@ -61,6 +61,7 @@ public class WorldGameManager : MonoBehaviour
         {
             Debug.Log("VICTORY! All towers lit.");
             if (winScreen) winScreen.SetActive(true);
+            Time.timeScale = 0f; // Zastavíme čas pri výhre
         }
     }
 }
